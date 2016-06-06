@@ -2,8 +2,6 @@ web:
   build: ./app
   volumes:
     - "./app:/src/app"
-  ports:
-    - "3030:3000"
   links:
     - "db:redis"
   command: nodemon -L app/bin/www
@@ -12,13 +10,12 @@ nginx:
   restart: always
   build: ./nginx/
   ports:
-    - "80:80"
-  volumes:
-    - /www/public
+    - "8080:80"
+  #volumes:
+  #  - /www/public
   volumes_from:
     - web
   links:
     - web:web
-
 db:
   image: redis
