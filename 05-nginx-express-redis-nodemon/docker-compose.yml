@@ -1,18 +1,17 @@
 web:
   build: ./app
+  environment:
+    NODE_ENV: development
   volumes:
     - "./app:/src/app"
   links:
     - "db:redis"
   command: nodemon -L app/bin/www
-
 nginx:
   restart: always
   build: ./nginx/
   ports:
-    - "8080:80"
-  #volumes:
-  #  - /www/public
+    - "8888:80"
   volumes_from:
     - web
   links:

@@ -1,7 +1,6 @@
 var express = require('express');
 var redis = require('redis');
 var os = require("os");
-var serverHostname = os.hostname();
 
 var router = express.Router();
 
@@ -20,7 +19,7 @@ router.get('/', function(req, res, next) {
     res.render('index', {
       title: 'Express + Docker',
       counter: result,
-      serverHostname: serverHostname
+      serverHostname: os.hostname()
     });
 
   });

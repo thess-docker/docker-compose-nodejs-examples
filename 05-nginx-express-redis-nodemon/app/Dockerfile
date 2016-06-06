@@ -1,5 +1,7 @@
 FROM node:0.10.38
 
+MAINTAINER Theodoros Ploumis <@theoploumis>
+
 RUN mkdir /src
 
 RUN npm install nodemon -g
