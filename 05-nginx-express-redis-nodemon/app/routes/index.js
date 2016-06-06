@@ -10,8 +10,6 @@ var host = process.env.REDIS_PORT_6379_TCP_ADDR || '127.0.01';
 var port = process.env.REDIS_PORT_6379_TCP_PORT || 6379;
 var client = redis.createClient(port, host);
 
-var redisHostname = host;
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   client.incr('counter', function(err, result) {
@@ -22,8 +20,7 @@ router.get('/', function(req, res, next) {
     res.render('index', {
       title: 'Express + Docker',
       counter: result,
-      serverHostname: serverHostname,
-      redisHostname: redisHostname
+      serverHostname: serverHostname
     });
 
   });
